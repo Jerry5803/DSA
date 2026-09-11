@@ -15,17 +15,17 @@ public:
             head = head->next;
         }
 
-        ListNode* curr = head;
+        ListNode* temp = head;
         ListNode* prev = nullptr;
 
-        while (curr != nullptr) {
-            if (curr->val == val) {
-                prev->next = curr->next;
+        while (temp != nullptr) {
+            if (temp->val == val) {
+                prev->next = temp->next;
             }
             else {
-                prev = curr;
+                prev = temp;
             }
-            curr = curr->next;
+            temp = temp->next;
         }
         return head;
     }
