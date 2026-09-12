@@ -7,10 +7,10 @@ public:
             freq[nums[i]]++;
         }
 
-        vector<vector<int>> bucket(nums.size() + 1);
+        vector<vector<int>>bucket(nums.size() + 1);
 
-        for (auto x : freq) {
-            bucket[x.second].push_back(x.first);
+        for (auto it : freq) {
+            bucket[it.second].push_back(it.first);
         }
 
         vector<int> ans;
