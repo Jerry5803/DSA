@@ -28,6 +28,7 @@ public:
             for (int i = 0; i < size; i++) {
                 TreeNode* node = q.front();
                 q.pop();
+                level.push_back(node->val);
 
                 if (node->left != nullptr) {
                     q.push(node->left);
@@ -35,7 +36,6 @@ public:
                 if (node->right != nullptr) {
                     q.push(node->right);
                 }
-                level.push_back(node->val);
             }
             ans.push_back(level);
         }
