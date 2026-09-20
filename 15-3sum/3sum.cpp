@@ -19,6 +19,7 @@ public:
                     ans.push_back({nums[i], nums[left], nums[right]});
                     left++;
                     right--;
+                    
                     while (left < right && nums[left] == nums[left - 1]) {
                         left++;
                     }
