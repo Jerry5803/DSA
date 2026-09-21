@@ -9,14 +9,12 @@ public:
     
     void push(int value) {
         myStack.push(value);
-
         if (minStack.empty()) {
             minStack.push(value);
         }
-
         else {
-            value = min(value, minStack.top());
-            minStack.push(value);
+            int mini = min(minStack.top(), value);
+            minStack.push(mini);
         }
     }
     
@@ -27,6 +25,7 @@ public:
     
     int top() {
         return myStack.top();
+        // return minStack.top();
     }
     
     int getMin() {
