@@ -11,15 +11,16 @@
 class Solution {
 public:
     void reorderList(ListNode* head) {
-        if (head == nullptr && head->next == nullptr) {
+        if (head == nullptr || head->next == nullptr) {
             return;
-        } 
+        }
+
         ListNode* slow = head;
         ListNode* fast = head;
 
         while (fast->next != nullptr && fast->next->next != nullptr) {
-            fast = fast->next->next;
             slow = slow->next;
+            fast = fast->next->next;
         }
 
         ListNode* curr = slow->next;
@@ -35,7 +36,6 @@ public:
 
         ListNode* first = head;
         ListNode* second = prev;
-
         while (second != nullptr) {
             ListNode* firstNext = first->next;
             ListNode* secondNext = second->next;
@@ -46,6 +46,5 @@ public:
             first = firstNext;
             second = secondNext;
         }
-
     }
 };
