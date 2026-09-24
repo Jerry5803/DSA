@@ -7,20 +7,20 @@ public:
         }
 
         int longest = 1;
-        unordered_set<int> mp;
+        unordered_set<int> st;
         for (int num : nums) {
-            mp.insert(num);
+            st.insert(num);
         }
 
-        for (auto it : mp) {
-            if (mp.find(it - 1) == mp.end()) {
+        for (auto it : st) {
+            if (st.find(it - 1) == st.end()) {
                 int start = it;
                 int count = 1;
-                while (mp.find(start + 1) != mp.end()) {
-                    count++;
-                    start++;
+                while (st.find(start + 1) != st.end()) {
+                    start += 1;
+                    count  += 1;
                 }
-                longest = max(count, longest);
+                longest = max(longest, count);
             }
         }
         return longest;
