@@ -8,6 +8,7 @@ public:
 
         int longest = 1;
         unordered_set<int> st;
+
         for (int num : nums) {
             st.insert(num);
         }
@@ -16,9 +17,10 @@ public:
             if (st.find(it - 1) == st.end()) {
                 int start = it;
                 int count = 1;
+
                 while (st.find(start + 1) != st.end()) {
+                    count += 1;
                     start += 1;
-                    count  += 1;
                 }
                 longest = max(longest, count);
             }
