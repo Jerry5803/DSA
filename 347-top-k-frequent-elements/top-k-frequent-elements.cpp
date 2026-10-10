@@ -8,6 +8,7 @@ public:
         }
 
         vector<vector<int>> bucket(nums.size() + 1);
+
         for (auto it : freq) {
             bucket[it.second].push_back(it.first);
         }
