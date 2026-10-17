@@ -3,18 +3,19 @@ public:
     int findMax(vector<int>& piles) {
         int maxi = piles[0];
         for (int i = 1; i < piles.size(); i++) {
-            maxi = max(maxi, piles[i]);
+            if (piles[i] > maxi) {
+                maxi = piles[i];
+            }
         }
         return maxi;
     }
 
-    long long findTime(vector<int>& piles, int hourly) {
-        long long totalTime = 0;
-
+    long long findSpeed(vector<int>& piles, int hourly) {
+        long long totalSpeed = 0;
         for (int i = 0; i < piles.size(); i++) {
-            totalTime += ((piles[i] + hourly -1) / hourly);
+            totalSpeed += (piles[i] + hourly - 1) / hourly;
         }
-        return totalTime;
+        return totalSpeed;
     }
 
     int minEatingSpeed(vector<int>& piles, int h) {
@@ -23,10 +24,9 @@ public:
 
         while (low <= high) {
             int mid = low + (high - low) / 2;
+            long long totalSpeed = findSpeed(piles, mid);
 
-            long long totalTime = findTime(piles, mid);
-
-            if (totalTime <= h) {
+            if (totalSpeed <= h) {
                 ans = mid;
                 high = mid - 1;
             }
