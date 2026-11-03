@@ -1,30 +1,29 @@
 class Solution {
 public:
-    int findMax(vector<int>& piles) {
+    int calcMax(vector<int>& piles) {
         int maxi = piles[0];
         for (int i = 1; i < piles.size(); i++) {
-            if (piles[i] > maxi) {
-                maxi = piles[i];
-            }
+            maxi = max(maxi, piles[i]);
         }
         return maxi;
     }
 
-    long long findSpeed(vector<int>& piles, int hourly) {
+    long long calcSpeed(vector<int>& piles, int mid) {
         long long totalSpeed = 0;
         for (int i = 0; i < piles.size(); i++) {
-            totalSpeed += (piles[i] + hourly - 1) / hourly;
+            totalSpeed += (piles[i] + mid - 1) / mid;
         }
         return totalSpeed;
     }
-
+    
     int minEatingSpeed(vector<int>& piles, int h) {
-        int low = 1, high = findMax(piles);
         int ans;
+        int low = 1;
+        int high = calcMax(piles);
 
         while (low <= high) {
             int mid = low + (high - low) / 2;
-            long long totalSpeed = findSpeed(piles, mid);
+            long long totalSpeed = calcSpeed(piles, mid);
 
             if (totalSpeed <= h) {
                 ans = mid;
